@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+__all__ = ["Typewriter"]
+
 from olipy.randomness import WanderingMonsterTable
 import random
 

@@ -1,5 +1,7 @@
 from random import choice
 
+__all__ = ["MarkovGenerator"]
+
 class MarkovGenerator(object):
 
     """A token generator using a Markov chain with configurable order.

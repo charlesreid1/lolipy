@@ -86,14 +86,9 @@ def board_games(how_many=10):
 
 def corrupt():
     """Corrupts whatever you type by adding diacritical marks."""
-    if sys.version_info.major == 3:
-        i = input
-    else:
-        i = raw_input
-
     go = True
     while go:
-        data = i("> ")
+        data = input("> ")
         if data.strip() == '':
             break
         for corruption in range(10):
@@ -134,7 +129,7 @@ def ebooks():
         total = 0
         for para in text.paragraphs:
             for quote in ebooks.quotes_in(para):
-                print(quote.encode("utf8"))
+                print(quote)
                 total += 1
         logging.info("%d quotes found in text" % total)
 

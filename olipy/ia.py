@@ -1,11 +1,17 @@
 """Code for dealing with the Internet Archive."""
 import datetime
-import internetarchive as ia
-import requests
+import urllib.parse as urlparse
+
 try:
-    import urlparse
+    import internetarchive as ia
+    import requests
 except ImportError:
-    import urllib.parse as urlparse
+    raise ImportError(
+        "The olipy.ia module requires extra dependencies. "
+        "Install them with: pip install olipy[ia]"
+    )
+
+__all__ = ["Item", "Text", "Audio"]
 
 class Item(object):
     "Wraps the ia.item class with extra utilities."""
@@ -51,7 +57,7 @@ class Item(object):
         """Find all the items that match `query` that were added since
         `date`.
         """
-        if isinstance(cutoff, basestring):
+        if isinstance(cutoff, str):
             cutoff = datetime.datetime.strptime(cutoff, cls.DATE_FORMAT)
         sorts = sorts or []
         sorts.insert(0, 'publicdate desc')

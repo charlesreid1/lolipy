@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "olipy"
+version = "2.0.0"
+description = "Python library for artistic text generation"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.8"
+authors = [
+    { name = "Leonard Richardson", email = "leonardr@segfault.org" }
+]
+dependencies = [
+    "textblob",
+    "wordfilter",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Text Processing",
+    "Topic :: Artistic Software",
+]
+
+[project.optional-dependencies]
+ia = ["internetarchive", "requests"]
+all = ["internetarchive", "requests"]
+
+[project.urls]
+Homepage = "https://github.com/leonardr/olipy/"
+
+[project.scripts]
+"olipy.apollo" = "olipy.example:apollo"
+"olipy.board_games" = "olipy.example:board_games"
+"olipy.corrupt" = "olipy.example:corrupt"
+"olipy.dinosaurs" = "olipy.example:dinosaurs"
+"olipy.ebooks" = "olipy.example:ebooks"
+"olipy.gibberish" = "olipy.example:gibberish"
+"olipy.mashteroids" = "olipy.example:mashteroids"
+"olipy.sonnet" = "olipy.example:sonnet"
+"olipy.typewriter" = "olipy.example:typewriter"
+"olipy.words" = "olipy.example:words"
+
+[tool.setuptools.package-data]
+olipy = ["data/**/*.json"]

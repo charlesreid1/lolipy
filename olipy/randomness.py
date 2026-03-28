@@ -1,4 +1,7 @@
 """Sophisticated tools for random choices."""
+
+__all__ = ["WanderingMonsterTable", "Gradient"]
+
 import random
 
 COMMON = "common"                 # 65%
