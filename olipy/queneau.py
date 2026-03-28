@@ -280,7 +280,7 @@ class CompositeAssembler(Assembler):
             total += size
             sizes.append(size)
 
-        choice = random.randint(0, total)
+        choice = random.randint(1, total)
         for i, assembler in enumerate(self.assemblers):
             choice -= sizes[i]
             if choice <= 0:
