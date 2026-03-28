@@ -12,13 +12,16 @@ quickly get started from a command line:
 
 ```
 # Create a virtual environment.
-virtualenv env
+python -m venv env
 
 # Activate the virtual environment.
 source env/bin/activate
 
-# Install Olipy within the virtual envirionment.
+# Install Olipy within the virtual environment.
 pip install olipy
+
+# For Internet Archive support:
+pip install olipy[ia]
 
 # Run an example script.
 olipy.apollo
@@ -32,11 +35,11 @@ dependencies are on the `TextBlob` site, but they boil down to running
 [this Python
 script](https://raw.github.com/sloria/TextBlob/master/download_corpora.py).
 
-# Example scripts
+# Examples
 
-Olipy is packaged with a number of  scripts which do fun things with
-the data and algorithms. You can run any of these scripts from a
-virtual environment that has the `olipy` package installed.
+The `examples/` directory contains standalone, runnable scripts
+demonstrating each module. You can also use the bundled CLI scripts
+from a virtual environment that has the `olipy` package installed.
 
 * `olipy.apollo`: Generates dialogue between astronauts and Mission
   Control. Demonstrates Queneau assembly on dialogue.
@@ -111,8 +114,8 @@ Project category:
 from olipy.corpora import governments
 print(governments.nsa_projects["codenames"][0] # prints "ARTIFICE")
 
-from olipy.pycorpora import humans
-print(humans.occupations["occupations"][0] # prints "accountant")
+from olipy.corpora import humans
+print(humans.occupations["occupations"][0]) # prints "accountant"
 ```
 
 Additionally, corpora supports an API similar to that provided by the Corpora Project node package:
@@ -169,7 +172,7 @@ using selected combinations of Unicode code charts.
 
 ```
 from olipy.gibberish import Gibberish
-print(Gibberish.random().tweet().encode("utf8"))
+print(Gibberish.random().tweet())
 # ৠ𐒧𐒇দ𐒔𐒜ৗ𐒃𐒝𐒓আ৭৭উ𐒇৶০ধপ𐒤৯ৰ৪ড়ঐবননত৲ফঌ𐒓৴ৄু০েএঠৰ𐒔𐒥গনি৶ঘ𐒋উঙ𐒤ঙছতাৃীফ৮৬৸উকফ𐒘ইমঢ৭ূণঌঊ𐒇𐒋ীঁিৃ𐒌𐒒৺𐒤৺ভ𐒖৭𐒤ৡৰল𐒊ঢ়ৎ𐒅যথখৱঌ
 # ঈঔ৫ঽ𐒔৩়দ𐒋ৠসুয়ঊশ𐒆𐒖𐒁ঔৰসঈ𐒆অ𐒋𐒑𐒨়দ৯ৄ৫ 😘
 ```
@@ -287,9 +290,9 @@ hundred million million poems"). Queneau assembly randomly creates new
 texts from a collection of existing texts with identical structure.
 
 ```
+from olipy import corpora
 from olipy.queneau import WordAssembler
-from olipy.corpus import Corpus
-assembler = WordAssembler(Corpus.load("dinosaurs"))
+assembler = WordAssembler(corpora.animals.dinosaurs['dinosaurs'])
 print(assembler.assemble_word())
 # Trilusmiasunaus
 ```
@@ -310,7 +313,7 @@ Here's a gradient from lowercase letters to uppercase letters:
 ```
 from olipy.randomness import Gradient
 import string
-print("".join(Gradient.gradient(string.lowercase, string.uppercase, 40)))
+print("".join(Gradient.gradient(string.ascii_lowercase, string.ascii_uppercase, 40)))
 # rkwyobijqQOzKfdcSHIhYINGrQkBRddEWPHYtORB
 ```
 
@@ -331,7 +334,7 @@ monsters = WanderingMonsterTable(
          very_rare=["Flumph", "Ygorl, Lord of Entropy"],
 )
 for i in range(5):
-    print monsters.choice()
+    print(monsters.choice())
 # Giant rat
 # Alligator
 # Alligator

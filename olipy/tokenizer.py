@@ -1,6 +1,7 @@
-from __future__ import absolute_import
 import re
 from textblob.base import BaseTokenizer
+
+__all__ = ["WordTokenizer"]
 
 class WordTokenizer(BaseTokenizer):
     """

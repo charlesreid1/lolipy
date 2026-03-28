@@ -1,5 +1,8 @@
 # coding=utf-8
 """Unicode glyphs that resemble other glyphs."""
+
+__all__ = ["alternate_spelling"]
+
 import random
 import string
 

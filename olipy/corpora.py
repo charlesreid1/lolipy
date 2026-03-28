@@ -8,6 +8,8 @@ import os
 import sys
 import json
 
+__all__ = ["CorpusLoader", "load", "names", "get_categories", "get_files", "get_file"]
+
 cache = dict()
 loaders = []
 
@@ -23,7 +25,8 @@ def _read(path):
     if not path in cache:
         if not os.path.exists(path):
             return
-        data = json.load(open(path))
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
         cache[path] = data
     return cache[path]
 

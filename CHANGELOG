@@ -1,3 +1,16 @@
+= 2.0.0 (20260328)
+
+* Migrated from setup.py to pyproject.toml.
+* Dropped Python 2 support. Requires Python 3.8+.
+* Made internetarchive and requests optional dependencies (pip install olipy[ia]).
+* Fixed resource leaks in JSON file loading (unclosed file handles).
+* Fixed broken pycorpora.py import.
+* Added __all__ exports to all public modules.
+* Added convenience imports in olipy package (from olipy import Gibberish, etc.).
+* Removed dead debug imports (pdb).
+* Added examples/ directory with 14 standalone runnable example scripts.
+* Updated README with corrected examples.
+
 = 1.0.4 (20191230)
 
 * Fixed a Python 2-ism in the Markov chain generator.

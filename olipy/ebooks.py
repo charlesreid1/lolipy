@@ -3,6 +3,8 @@ import re
 import textwrap
 from textblob import TextBlob, Sentence
 from olipy import corpora
+
+__all__ = ["EbooksQuotes"]
 stopwords = corpora.words.stopwords.en
 
 from olipy.tokenizer import WordTokenizer
@@ -71,7 +73,7 @@ class EbooksQuotes(object):
             score *= 2
             # print " Length bonus: %.2f" % score
 
-        blob = TextBlob(s.decode("utf8"))
+        blob = TextBlob(s)
         try:
             words = blob.words
         except Exception as e:
@@ -200,7 +202,7 @@ class EbooksQuotes(object):
                 not reversed_words[i+1] in stopwords):
                 # print "Stopword %s (previous) %s" % (w, reversed_words[i+1])
                 r = re.compile(r".*\b(%s)\b" % w)
-                string = unicode(string)
+                string = str(string)
                 m = r.search(string)
                 if m is not None:
                     string = string[:m.span(1)[0]]
@@ -270,7 +272,7 @@ class EbooksQuotes(object):
                             break
 
                     if isinstance(quote, bytes):
-                        quote = quote.decode("utf8")
+                        quote = quote.decode("utf-8")
                     quote = self.remove_ending_punctuation(quote)
                     quote = self.remove_beginning_punctuation(quote)
 

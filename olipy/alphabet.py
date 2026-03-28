@@ -4,6 +4,8 @@
 This is used by gibberish.py.
 """
 
+__all__ = ["Alphabet"]
+
 import unicodedata
 import random
 from olipy import corpora

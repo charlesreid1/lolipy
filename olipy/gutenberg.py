@@ -4,6 +4,8 @@ import logging
 import os
 import zipfile
 import random
+
+__all__ = ["ProjectGutenbergText"]
 NS = dict()
 try:
     import rdflib
@@ -76,7 +78,7 @@ class ProjectGutenbergText(object):
         if self.graph is not None:
             # The most reliable source is an RDF graph. If we have one, use it.
             self.languages = set(
-                [unicode(x[2]) for x in self.graph.triples((None, NS['dcterms'].language, None))])
+                [str(x[2]) for x in self.graph.triples((None, NS['dcterms'].language, None))])
         else:
             # Look for a "Language: Foo" bit of text in the header.
             m = self.LANGUAGE.search(header)
@@ -89,13 +91,16 @@ class ProjectGutenbergText(object):
         check_encoding = self.original_encoding or 'ascii'
         self.text = None
         try:
-            self.text = unicode(text, check_encoding)
+            if isinstance(text, bytes):
+                self.text = text.decode(check_encoding)
+            else:
+                self.text = text
         except Exception as e:
             specified_encoding_is_wrong = ( self.original_encoding is not None)
             for try_encoding in ('utf-8', 'iso-8859-1', 'latin-1'):
                 try:
                     if isinstance(text, bytes):
-                        self.text = unicode(text, try_encoding)
+                        self.text = text.decode(try_encoding)
                     else:
                         self.text = text
                     if specified_encoding_is_wrong:
@@ -117,7 +122,8 @@ class ProjectGutenbergText(object):
             return None
         if self._graph is None:
             self._graph = rdflib.Graph()
-            self._graph.load(open(self.rdf_path))
+            with open(self.rdf_path) as f:
+                self._graph.load(f)
         return self._graph
 
     @property
@@ -132,7 +138,8 @@ class ProjectGutenbergText(object):
             this_dir = os.path.split(__file__)[0]
             mapping_file = os.path.join(
                 this_dir, 'data', 'ids_for_old_project_gutenberg_filenames.json')
-            self.ids_for_old_filenames = json.load(open(mapping_file))
+            with open(mapping_file, encoding="utf-8") as f:
+                self.ids_for_old_filenames = json.load(f)
 
         path_part, filename = os.path.split(path)
         ignore, directory_part = os.path.split(path_part)

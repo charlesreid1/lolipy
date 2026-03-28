@@ -1,7 +1,8 @@
 # coding=utf-8
 """Create gibberish from source alphabets."""
 
-from pdb import set_trace
+__all__ = ["Gibberish", "Corruptor"]
+
 import os
 import json
 import random
@@ -726,7 +727,7 @@ class GlyphNames(object):
         # self.missing = []
         # self.max_present = None
         for i in range(1, 1000000):
-            c = unichr(i)
+            c = chr(i)
             try:
                 glyph_name = unicodedata.name(c)
                 self.inverse[glyph_name] = c
@@ -766,5 +767,5 @@ if __name__ == '__main__':
     for i in range(1000):
         if not alphabets:
             gibberish = Gibberish.random(freq)
-        print(gibberish.tweet().encode("utf8"))
+        print(gibberish.tweet())
         print('---')

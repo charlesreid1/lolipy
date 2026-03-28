@@ -1,4 +1,7 @@
 """Create Queneau assemblies of source texts."""
+
+__all__ = ["Assembler", "SentenceAssembler", "WordAssembler", "CompositeAssembler", "DialogueAssembler"]
+
 from io import StringIO
 import json
 import random

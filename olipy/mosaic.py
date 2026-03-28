@@ -1,5 +1,7 @@
 # encoding: utf-8
-from pdb import set_trace
+
+__all__ = ["SymmetricalMosaic"]
+
 import re
 import random
 from olipy.randomness import WanderingMonsterTable
@@ -22,7 +24,7 @@ class Mosaic(object):
     def height(self):
         return len(self.cells)
 
-    def __unicode__(self):
+    def __str__(self):
         return "\n".join(self.cells)
 
 class SymmetryList(object):
@@ -201,7 +203,7 @@ class MirroredMosaicGibberish(MosaicGibberish):
 
         mosaic = SymmetricalMosaic.from_alphabet(self.alphabet, num_spaces)
         m = mosaic.populate(height, width, hor_sym, ver_sym)
-        m = m.__unicode__()
+        m = str(m)
         if not m[0].strip():
             # This tweet starts with whitespace. Use COMBINING
             # GRAPHEME JOINER to get Twitter to preserve the whitespace.
@@ -336,7 +338,7 @@ class Mirror(object):
     def potentials(classmethod):
         """Report on characters that might need to be added to this class."""
         for alphabet in Alphabet.TILABLE_CHARSET_S:
-            if isinstance(alphabet, basestring):
+            if isinstance(alphabet, str):
                 try:
                     alphabet = Alphabet.characters(alphabet)
                 except KeyError as e:

@@ -3,4 +3,5 @@ import os
 
 def load_json(filename):
     path = os.path.join(os.path.dirname(__file__), filename)
-    return json.load(open(path))
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
