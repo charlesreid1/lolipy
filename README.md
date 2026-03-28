@@ -27,6 +27,26 @@ pip install olipy[ia]
 olipy.apollo
 ```
 
+## Development install
+
+To install from a local clone for development:
+
+```
+# Clone the repo and cd into it.
+git clone https://github.com/leonardr/olipy.git
+cd olipy
+
+# Create and activate a virtual environment.
+python -m venv env
+source env/bin/activate
+
+# Install in editable mode.
+pip install -e .
+
+# Or, with Internet Archive support:
+pip install -e .[ia]
+```
+
 Olipy uses the [`TextBlob`](https://textblob.readthedocs.org/) library
 to parse text. Installing Olipy through `pip` will install
 TextBlob as a dependency, but `TextBlob` has extra dependencies (text corpora) which

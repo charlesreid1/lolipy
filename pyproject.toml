@@ -42,5 +42,8 @@ Homepage = "https://github.com/leonardr/olipy/"
 "olipy.typewriter" = "olipy.example:typewriter"
 "olipy.words" = "olipy.example:words"
 
+[tool.setuptools.packages.find]
+include = ["olipy*"]
+
 [tool.setuptools.package-data]
 olipy = ["data/**/*.json"]
