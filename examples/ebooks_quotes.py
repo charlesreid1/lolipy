@@ -3,9 +3,9 @@
 Demonstrates EbooksQuotes and ProjectGutenbergText for sampling
 interesting passages from a text.
 """
-from olipy import corpora
-from olipy.ebooks import EbooksQuotes
-from olipy.gutenberg import ProjectGutenbergText
+from lolipy import corpora
+from lolipy.ebooks import EbooksQuotes
+from lolipy.gutenberg import ProjectGutenbergText
 
 # Load a public domain text
 data = corpora.words.literature.nonfiction.literary_shrines

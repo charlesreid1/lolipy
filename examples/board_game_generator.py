@@ -5,8 +5,8 @@ and CompositeAssembler together.
 """
 import re
 import textwrap
-from olipy import corpora
-from olipy.queneau import Assembler, WordAssembler, CompositeAssembler
+from lolipy import corpora
+from lolipy.queneau import Assembler, WordAssembler, CompositeAssembler
 
 corpus = Assembler.loadlist(
     corpora.games.bgg_board_games['board_games'], tokens_in='description'

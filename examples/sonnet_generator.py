@@ -3,8 +3,8 @@
 Demonstrates Assembler for recombining lines from Shakespeare's sonnets
 into new poems.
 """
-from olipy import corpora
-from olipy.queneau import Assembler
+from lolipy import corpora
+from lolipy.queneau import Assembler
 
 sonnets = corpora.words.literature.shakespeare_sonnets['sonnets']
 corpus = Assembler.loadlist(sonnets, tokens_in='lines')

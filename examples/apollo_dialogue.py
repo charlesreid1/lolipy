@@ -2,8 +2,8 @@
 
 Demonstrates DialogueAssembler with the Apollo 11 transcript corpus.
 """
-from olipy import corpora
-from olipy.queneau import DialogueAssembler
+from lolipy import corpora
+from lolipy.queneau import DialogueAssembler
 
 transcript = corpora.words.literature.nonfiction.apollo_11['transcript']
 assembler = DialogueAssembler.loadlist(transcript)

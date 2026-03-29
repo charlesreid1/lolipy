@@ -2,8 +2,8 @@
 
 Demonstrates WordAssembler for generating new words from a dictionary.
 """
-from olipy import corpora
-from olipy.queneau import WordAssembler
+from lolipy import corpora
+from lolipy.queneau import WordAssembler
 
 words = corpora.words.english_words['words']
 corpus = WordAssembler(words)

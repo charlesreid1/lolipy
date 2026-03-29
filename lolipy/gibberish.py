@@ -8,10 +8,10 @@ import json
 import random
 import sys
 import unicodedata
-from olipy.randomness import Gradient, WanderingMonsterTable, COMMON, UNCOMMON, RARE, VERY_RARE
+from lolipy.randomness import Gradient, WanderingMonsterTable, COMMON, UNCOMMON, RARE, VERY_RARE
 
-from olipy.alphabet import *
-from olipy.letterforms import alternate_spelling
+from lolipy.alphabet import *
+from lolipy.letterforms import alternate_spelling
 
 class WordLength:
 
@@ -510,7 +510,7 @@ class GibberishTable(WanderingMonsterTable):
         self.add(ModifierGradientGibberish, UNCOMMON)
 
         # A mirrored mosaic
-        from olipy.mosaic import MirroredMosaicGibberish
+        from lolipy.mosaic import MirroredMosaicGibberish
         self.add(MirroredMosaicGibberish, COMMON)
 
         # A mirrored mosaic from an untilable alphabet

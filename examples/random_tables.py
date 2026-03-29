@@ -4,7 +4,7 @@ Demonstrates WanderingMonsterTable (D&D-style weighted random selection)
 and Gradient (transitioning between character sets).
 """
 import string
-from olipy.randomness import WanderingMonsterTable, Gradient
+from lolipy.randomness import WanderingMonsterTable, Gradient
 
 # WanderingMonsterTable: weighted random selection
 monsters = WanderingMonsterTable(

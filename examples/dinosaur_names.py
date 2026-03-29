@@ -3,8 +3,8 @@
 Demonstrates WordAssembler for creating new words from existing words
 by recombining their phonetic structure.
 """
-from olipy import corpora
-from olipy.queneau import WordAssembler
+from lolipy import corpora
+from lolipy.queneau import WordAssembler
 
 dinosaurs = corpora.animals.dinosaurs['dinosaurs']
 assembler = WordAssembler(dinosaurs)

@@ -8,7 +8,7 @@ __all__ = ["Alphabet"]
 
 import unicodedata
 import random
-from olipy import corpora
+from lolipy import corpora
 
 CUSTOM_ALPHABETS = {
     "Dice": u"\N{Die Face-1}\N{Die Face-2}\N{Die Face-3}\N{Die Face-4}\N{Die Face-5}\N{Die Face-6}",

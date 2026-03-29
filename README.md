@@ -1,14 +1,15 @@
 # lolipy
 
-Olipy is a Python library for artistic text generation. Unlike most
-software packages, which have a single, unifying purpose. Olipy is
+lolipy is a fork of [olipy](https://github.com/leonardr/olipy), 
+a Python library for artistic text generation. Unlike most
+software packages, which have a single, unifying purpose. lolipy is
 more like a set of art supplies. Each module is designed to help you
 achieve a different aesthetic effect.
 
 # Setup
 
-Olipy is distributed as the `olipy` package on PyPI. Here's how to
-quickly get started from a command line:
+lolipy must be installed from source.
+To quickly get started from a command line:
 
 ```
 # Create a virtual environment.
@@ -17,14 +18,18 @@ python -m venv env
 # Activate the virtual environment.
 source env/bin/activate
 
-# Install Olipy within the virtual environment.
-pip install olipy
+# Clone copy of the repo
+git clone https://github.com/charlesreid1/lolipy.git
+cd lolipy
 
-# For Internet Archive support:
-pip install olipy[ia]
+# Install lolipy
+pip install -e .
 
-# Run an example script.
-olipy.apollo
+# Install lolipy with Internet Archive support:
+pip install -e .[ia]
+
+# Run an example command line script
+lolipy.apollo
 ```
 
 ## Development install
@@ -33,8 +38,8 @@ To install from a local clone for development:
 
 ```
 # Clone the repo and cd into it.
-git clone https://github.com/leonardr/olipy.git
-cd olipy
+git clone https://github.com/charlesreid1/lolipy.git
+cd lolipy
 
 # Create and activate a virtual environment.
 python -m venv env
@@ -47,28 +52,27 @@ pip install -e .
 pip install -e .[ia]
 ```
 
-Olipy uses the [`TextBlob`](https://textblob.readthedocs.org/) library
-to parse text. Installing Olipy through `pip` will install
-TextBlob as a dependency, but `TextBlob` has extra dependencies (text corpora) which
-are _not_ installed by `pip`.  Instructions for installing the extra
+lolipy uses the [`TextBlob`](https://textblob.readthedocs.org/) library
+to parse text.
+
+Instructions for installing the extra
 dependencies are on the `TextBlob` site, but they boil down to running
-[this Python
-script](https://raw.github.com/sloria/TextBlob/master/download_corpora.py).
+[this Python script](https://raw.github.com/sloria/TextBlob/master/download_corpora.py).
 
 # Examples
 
 The `examples/` directory contains standalone, runnable scripts
 demonstrating each module. You can also use the bundled CLI scripts
-from a virtual environment that has the `olipy` package installed.
+from a virtual environment that has the `lolipy` package installed.
 
 # Module guide
 
-### `olipy.alphabet`
+### `lolipy.alphabet`
 
 A list of interesting groups of Unicode characters -- alphabets, shapes, and so on.
 
 ```
-from olipy.alphabet import Alphabet
+from lolipy.alphabet import Alphabet
 print(Alphabet.default().random_choice())
 # 𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷
 print(Alphabet.default().random_choice())
@@ -77,18 +81,18 @@ print(Alphabet.default().random_choice())
 
 This module is used heavily by gibberish.py.
 
-### `olipy.corpora`
+### `lolipy.corpora`
 
 This module makes it easy to load datasets from Darius
 Kazemi's [Corpora Project](https://github.com/dariusk/corpora), as
-well as additional datasets specific to Olipy -- mostly large word
+well as additional datasets specific to lolipy -- mostly large word
 lists which the Corpora Project considers out of scope. (These new
 datasets are discussed at the end of this document.)
 
-Olipy is packaged with a complete copy of the data from the Corpora
+lolipy is packaged with a complete copy of the data from the Corpora
 Project, so you don't have to install anything extra. However,
 installing the Corpora Project data some other way can give you
-datasets created since the Olipy package was updated.
+datasets created since the lolipy package was updated.
 
 The interface of the `corpora` module is that used by Allison Parrish's
 [`pycorpora`](https://github.com/aparrish/pycorpora/) project. The
@@ -96,7 +100,7 @@ datasets show up as Python modules which contain Python data
 structures:
 
 ```
-from olipy import corpora
+from lolipy import corpora
 for city in corpora.geography.large_cities['cities']:
     print(city)
 # Akron
@@ -109,17 +113,17 @@ You can use `from corpora import` ... to import a particular Corpora
 Project category:
 
 ```
-from olipy.corpora import governments
-print(governments.nsa_projects["codenames"][0] # prints "ARTIFICE")
+from lolipy.corpora import governments
+print(governments.nsa_projects["codenames"][0]) # prints "ARTIFICE"
 
-from olipy.corpora import humans
+from lolipy.corpora import humans
 print(humans.occupations["occupations"][0]) # prints "accountant"
 ```
 
 Additionally, corpora supports an API similar to that provided by the Corpora Project node package:
 
 ```
-from olipy import corpora
+from lolipy import corpora
 
 # get a list of all categories
 corpora.get_categories() # ["animals", "archetypes"...]
@@ -137,7 +141,7 @@ corpora.get_file("animals", "birds_antarctica") # returns dict w/data
 corpora.get_file("words/literature", "shakespeare_words")
 ```
 
-### `olipy.ebooks`
+### `lolipy.ebooks`
 
 A module for incongruously sampling texts in the style of the infamous
 [https://twitter.com/horse_ebooks](@horse_ebooks). Based on the
@@ -145,8 +149,8 @@ A module for incongruously sampling texts in the style of the infamous
 Parrish.
 
 ```
-from olipy.ebooks import EbooksQuotes
-from olipy import corpora
+from lolipy.ebooks import EbooksQuotes
+from lolipy import corpora
 data = corpora.words.literature.fiction.pride_and_prejudice
 for quote in EbooksQuotes().quotes_in(data['text']):
     print(quote)
@@ -162,40 +166,40 @@ Example scripts for ebooks.py:
   text, with a bias towards the keywords you give it as command-line
   arguments.
 
-### `olipy.gibberish`
+### `lolipy.gibberish`
 
 A module for those interested in the appearance of Unicode
 glyphs. Its main use is generating aesthetically pleasing gibberish
 using selected combinations of Unicode code charts.
 
 ```
-from olipy.gibberish import Gibberish
+from lolipy.gibberish import Gibberish
 print(Gibberish.random().tweet())
 # ৠ𐒧𐒇দ𐒔𐒜ৗ𐒃𐒝𐒓আ৭৭উ𐒇৶০ধপ𐒤৯ৰ৪ড়ঐবননত৲ফঌ𐒓৴ৄু০েএঠৰ𐒔𐒥গনি৶ঘ𐒋উঙ𐒤ঙছতাৃীফ৮৬৸উকফ𐒘ইমঢ৭ূণঌঊ𐒇𐒋ীঁিৃ𐒌𐒒৺𐒤৺ভ𐒖৭𐒤ৡৰল𐒊ঢ়ৎ𐒅যথখৱঌ
 # ঈঔ৫ঽ𐒔৩়দ𐒋ৠসুয়ঊশ𐒆𐒖𐒁ঔৰসঈ𐒆অ𐒋𐒑𐒨়দ৯ৄ৫ 😘
 ```
 
-### `olipy.gutenberg`
+### `lolipy.gutenberg`
 
 A module for dealing with texts from Project Gutenberg. Strips headers
 and footers, and parses the text.
 
 ```
-from olipy import corpora
-from olipy.gutenberg import ProjectGutenbergText
+from lolipy import corpora
+from lolipy.gutenberg import ProjectGutenbergText
 text = corpora.words.literature.nonfiction.literary_shrines['text']
 text = ProjectGutenbergText(text)
 print(len(text.paragraphs))
 # 1258
 ```
 
-### `olipy.ia`
+### `lolipy.ia`
 
 A module for dealing with texts from Internet Archive.
 
 ```
 import random
-from olipy.ia import Text
+from lolipy.ia import Text
 
 # Print a URL to the web reader for a specific title in the IA collection.
 item = Text("yorkchronicle1946poqu")
@@ -211,7 +215,7 @@ print(item.image_url(page, scale=8))
 # https://ia600106.us.archive.org/BookReader/BookReaderImages.php?zip=/30/items/TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150/TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150_jp2.zip&file=TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150_jp2/TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150_0007.jp2&scale=8
 ```
 
-### `olipy.letterforms`
+### `lolipy.letterforms`
 
 A module that knows things about the shapes of Unicode glyphs.
 
@@ -219,17 +223,17 @@ A module that knows things about the shapes of Unicode glyphs.
 to similar-looking characters.
 
 ```
-from olipy.letterforms import alternate_spelling
+from lolipy.letterforms import alternate_spelling
 print(alternate_spelling("I love alternate letterforms."))
 # ヱ 𝑳𝖮Ⓥ𝙀 𝚊𝓵┯⒠┌𝐍ａ⫪𝖊 𝐋𝖾ߙ𝓉ᥱ𝙧ߓ𝕠┍ጠ𝑆.
 ```
 
-### `olipy.markov`
+### `lolipy.markov`
 
 A module for generating new token lists from old token lists using a
 Markov chain.
 
-Olipy's primary purpose is to promote alternatives to
+lolipy's primary purpose is to promote alternatives to
 Markov chains (such as Queneau assembly and the *_ebooks algorithm),
 but sometimes you really do want a Markov chain. Queneau assembly is
 usually better than a Markov chain above the word level (constructing
@@ -240,8 +244,8 @@ assembling sequences of words.
 markov.py was originally written by Allison "A. A." Parrish.
 
 ```
-from olipy.markov import MarkovGenerator
-from olipy import corpora
+from lolipy.markov import MarkovGenerator
+from lolipy import corpora
 text = corpora.words.literature.nonfiction.literary_shrines['text']
 g = MarkovGenerator(order=1, max=100)
 g.add(text)
@@ -254,7 +258,7 @@ print(" ".join(g.assemble()))
 # the heart'--allowed--yet I got out and more convenient.... Mr.
 ```
 
-### `olipy.mosaic`
+### `lolipy.mosaic`
 
 Tiles Unicode characters together to create symmetrical mosaics.
 gibberish.py uses this module as one of its techniques. Includes
@@ -262,7 +266,7 @@ information on Unicode characters whose glyphs appear to be mirror
 images.
 
 ```
-from olipy.mosaic import MirroredMosaicGibberish
+from lolipy.mosaic import MirroredMosaicGibberish
 mosaic = MirroredMosaicGibberish()
 print(mosaic.tweet())
 # ▛▞ ▙▞▙▟▚▟ ▚▜
@@ -280,7 +284,7 @@ print(gibberish.tweet())
 
 ```
 
-### `olipy.queneau`
+### `lolipy.queneau`
 
 A module for Queneau assembly, a technique pioneered by Raymond
 Queneau in his 1961 book "Cent mille milliards de poèmes" ("One
@@ -288,14 +292,14 @@ hundred million million poems"). Queneau assembly randomly creates new
 texts from a collection of existing texts with identical structure.
 
 ```
-from olipy import corpora
-from olipy.queneau import WordAssembler
+from lolipy import corpora
+from lolipy.queneau import WordAssembler
 assembler = WordAssembler(corpora.animals.dinosaurs['dinosaurs'])
 print(assembler.assemble_word())
 # Trilusmiasunaus
 ```
 
-### `olipy.randomness`
+### `lolipy.randomness`
 
 Techniques for generating random patterns that are more sophisticated
 than `random.choice`.
@@ -309,7 +313,7 @@ towards another set of options near the end.
 Here's a gradient from lowercase letters to uppercase letters:
 
 ```
-from olipy.randomness import Gradient
+from lolipy.randomness import Gradient
 import string
 print("".join(Gradient.gradient(string.ascii_lowercase, string.ascii_uppercase, 40)))
 # rkwyobijqQOzKfdcSHIhYINGrQkBRddEWPHYtORB
@@ -323,7 +327,7 @@ selection from the "uncommon" bucket 20% of the time, "rare" 11% of the time, an
 the time. (It uses the same probabilities as the first edition of Advanced Dungeons & Dragons.)
 
 ```
-from olipy.randomness import WanderingMonsterTable
+from lolipy.randomness import WanderingMonsterTable
 
 monsters = WanderingMonsterTable(
          common=["Giant rat", "Alligator"],
@@ -340,7 +344,7 @@ for i in range(5):
 # Giant rat
 ```
 
-### `olipy.tokenizer`
+### `lolipy.tokenizer`
 
 A word tokenizer that performs better than NLTK's default tokenizers
 on some common types of English.
@@ -354,28 +358,43 @@ WordTokenizer().tokenize(s)
 # ['Good', 'muffins', 'cost', '$', '3.88', 'in', 'New', 'York.', 'Email:', 'muffins@example.com']
 ```
 
-### `olipy.typewriter`
+### `lolipy.typewriter`
 
 Simulates the Adler Universal 39 typewriter used in _The Shining_ and
 the sorts of typos that would be made on that typewriter. Originally
 written for [@a_dull_bot](https://botsin.space/@adullbot).
 
 ```
-from olipy.typewriter import Typewriter
+from lolipy.typewriter import Typewriter
 typewriter = Typewriter()
 typewriter.type("All work and no play makes Jack a dull boy.")
 # 'All work and no play makes Jack a dull bo6.'
 ```
 
+# Command-line utilities
+
+The `lolipy` package includes several command-line utilities that demonstrate its capabilities. You can run these directly from your terminal if the package is installed:
+
+* `lolipy.apollo`: Assembles fictional dialogue from Apollo 11 mission transcripts.
+* `lolipy.board_games`: Generates names, genres, and descriptions for fictional board games.
+* `lolipy.corrupt`: An interactive tool that "corrupts" your input text with diacritical marks.
+* `lolipy.dinosaurs`: Generates names for fictional dinosaurs using Queneau assembly.
+* `lolipy.ebooks`: Generates pithy quotes from Project Gutenberg texts in the style of @horse_ebooks.
+* `lolipy.gibberish`: Generates a random tweet-length string of aesthetically pleasing gibberish.
+* `lolipy.mashteroids`: Creates fictional asteroid names and discovery citations.
+* `lolipy.sonnet`: Assembles a new sonnet from lines of Shakespeare's sonnets.
+* `lolipy.typewriter`: Simulates the Adler Universal 39 typewriter, adding realistic typos (reads from stdin).
+* `lolipy.words`: Generates new, English-sounding words using Queneau assembly.
+
 # Extra corpora
 
-Olipy makes available several word lists and datasets that aren't in
+lolipy makes available several word lists and datasets that aren't in
 the Corpora Project. These datasets (as well as the standard Corpora
 Project datasets) can be accessed through the `corpora` module. Just
 write code like this:
 
 ```
-from olipy import corpora
+from lolipy import corpora
 nouns = corpora.words.common_nouns['abstract_nouns']
 ```
 

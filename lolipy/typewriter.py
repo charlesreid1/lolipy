@@ -2,7 +2,7 @@
 
 __all__ = ["Typewriter"]
 
-from olipy.randomness import WanderingMonsterTable
+from lolipy.randomness import WanderingMonsterTable
 import random
 
 class Typewriter(object):

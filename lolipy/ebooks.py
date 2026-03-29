@@ -2,12 +2,12 @@ import random
 import re
 import textwrap
 from textblob import TextBlob, Sentence
-from olipy import corpora
+from lolipy import corpora
 
 __all__ = ["EbooksQuotes"]
 stopwords = corpora.words.stopwords.en
 
-from olipy.tokenizer import WordTokenizer
+from lolipy.tokenizer import WordTokenizer
 
 class EbooksQuotes(object):
 

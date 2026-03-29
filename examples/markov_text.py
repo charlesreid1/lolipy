@@ -3,8 +3,8 @@
 Demonstrates MarkovGenerator for assembling sequences of words
 from training text.
 """
-from olipy import corpora
-from olipy.markov import MarkovGenerator
+from lolipy import corpora
+from lolipy.markov import MarkovGenerator
 
 text = corpora.words.literature.nonfiction.literary_shrines['text']
 

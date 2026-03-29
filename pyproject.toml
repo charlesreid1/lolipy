@@ -1,10 +1,9 @@
 [build-system]
 requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
-
 [project]
-name = "olipy"
-version = "2.0.0"
+name = "lolipy"
+version = "2.1.0"
 description = "Python library for artistic text generation"
 readme = "README.md"
 license = "GPL-3.0-or-later"
@@ -28,22 +27,23 @@ ia = ["internetarchive", "requests"]
 all = ["internetarchive", "requests"]
 
 [project.urls]
-Homepage = "https://github.com/leonardr/olipy/"
+Homepage = "https://github.com/charlesreid1/lolipy/"
 
 [project.scripts]
-"olipy.apollo" = "olipy.example:apollo"
-"olipy.board_games" = "olipy.example:board_games"
-"olipy.corrupt" = "olipy.example:corrupt"
-"olipy.dinosaurs" = "olipy.example:dinosaurs"
-"olipy.ebooks" = "olipy.example:ebooks"
-"olipy.gibberish" = "olipy.example:gibberish"
-"olipy.mashteroids" = "olipy.example:mashteroids"
-"olipy.sonnet" = "olipy.example:sonnet"
-"olipy.typewriter" = "olipy.example:typewriter"
-"olipy.words" = "olipy.example:words"
+"lolipy.apollo" = "lolipy.example:apollo"
+"lolipy.board_games" = "lolipy.example:board_games"
+"lolipy.corrupt" = "lolipy.example:corrupt"
+"lolipy.dinosaurs" = "lolipy.example:dinosaurs"
+"lolipy.ebooks" = "lolipy.example:ebooks"
+"lolipy.gibberish" = "lolipy.example:gibberish"
+"lolipy.mashteroids" = "lolipy.example:mashteroids"
+"lolipy.sonnet" = "lolipy.example:sonnet"
+"lolipy.typewriter" = "lolipy.example:typewriter"
+"lolipy.words" = "lolipy.example:words"
 
 [tool.setuptools.packages.find]
-include = ["olipy*"]
+include = ["lolipy*"]
 
 [tool.setuptools.package-data]
-olipy = ["data/**/*.json"]
+lolipy = ["data/**/*.json"]
+

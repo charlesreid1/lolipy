@@ -7,8 +7,8 @@ try:
     import requests
 except ImportError:
     raise ImportError(
-        "The olipy.ia module requires extra dependencies. "
-        "Install them with: pip install olipy[ia]"
+        "The lolipy.ia module requires extra dependencies. "
+        "Install them with: pip install lolipy[ia]"
     )
 
 __all__ = ["Item", "Text", "Audio"]

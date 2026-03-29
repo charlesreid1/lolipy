@@ -1,8 +1,8 @@
 """Replace letters with visually similar Unicode characters.
 
-Demonstrates the alternate_spelling function from olipy.letterforms.
+Demonstrates the alternate_spelling function from lolipy.letterforms.
 """
-from olipy.letterforms import alternate_spelling
+from lolipy.letterforms import alternate_spelling
 
 phrases = [
     "I love alternate letterforms.",

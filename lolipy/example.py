@@ -4,20 +4,20 @@ import logging
 import re
 import sys
 import textwrap
-from olipy import corpora
-from olipy.ebooks import EbooksQuotes
-from olipy.gibberish import (
+from lolipy import corpora
+from lolipy.ebooks import EbooksQuotes
+from lolipy.gibberish import (
     Corruptor,
     Gibberish,
 )
-from olipy.gutenberg import ProjectGutenbergText
-from olipy.queneau import (
+from lolipy.gutenberg import ProjectGutenbergText
+from lolipy.queneau import (
     Assembler,
     CompositeAssembler,
     DialogueAssembler,
     WordAssembler,
 )
-from olipy.typewriter import Typewriter
+from lolipy.typewriter import Typewriter
 
 def apollo():
     transcript = corpora.words.literature.nonfiction.apollo_11['transcript']

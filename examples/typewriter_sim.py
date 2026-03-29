@@ -2,7 +2,7 @@
 
 Demonstrates the Typewriter class for introducing realistic typos.
 """
-from olipy.typewriter import Typewriter
+from lolipy.typewriter import Typewriter
 
 text = "All work and no play makes Jack a dull boy."
 

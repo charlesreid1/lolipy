@@ -1,8 +1,8 @@
 """Corrupt text by adding diacritical marks.
 
-Demonstrates the Corruptor class from olipy.gibberish.
+Demonstrates the Corruptor class from lolipy.gibberish.
 """
-from olipy.gibberish import Corruptor
+from lolipy.gibberish import Corruptor
 
 text = "All work and no play makes Jack a dull boy."
 

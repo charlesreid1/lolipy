@@ -17,7 +17,7 @@ this_dir = os.path.split(__file__)[0]
 data_path = os.path.join(this_dir, "data")
 components = [
     (data_path, "corpora-original", "data"),
-    (data_path, "corpora-olipy")
+    (data_path, "corpora-lolipy")
 ]
 data_directories = [os.path.join(*x) for x in components]
 
@@ -153,7 +153,7 @@ class CorpusLoader(object):
         return _read(path)
 
 # Load the standard corpora data from corpora-original/data and the
-# olipy extensions from corpora-more.
+# lolipy extensions from corpora-more.
 module = sys.modules[__name__]
 for subdir in data_directories:
     for resource_type in sorted(os.listdir(subdir)):

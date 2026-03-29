@@ -3,7 +3,7 @@
 Demonstrates MirroredMosaicGibberish for generating tweet-sized
 Unicode art.
 """
-from olipy.mosaic import MirroredMosaicGibberish
+from lolipy.mosaic import MirroredMosaicGibberish
 
 mosaic = MirroredMosaicGibberish()
 
