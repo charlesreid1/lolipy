@@ -1,4 +1,4 @@
-# Olipy
+# lolipy
 
 Olipy is a Python library for artistic text generation. Unlike most
 software packages, which have a single, unifying purpose. Olipy is
@@ -61,31 +61,9 @@ The `examples/` directory contains standalone, runnable scripts
 demonstrating each module. You can also use the bundled CLI scripts
 from a virtual environment that has the `olipy` package installed.
 
-* `olipy.apollo`: Generates dialogue between astronauts and Mission
-  Control. Demonstrates Queneau assembly on dialogue.
-* `olipy.board_games`: Generates board game names and
-  descriptions. Demonstrates complex Queneau assemblies.
-* `olipy.corrupt` "Corrupts" whatever text is typed in by adding
-  increasing numbers of diacritical marks. Demonstrates the
-  `gibberish.Corruptor` class.
-* `olipy.dinosaurs`: Generates dinosaur names. Demonstrates Queneau
-  assembly on parts of a word.
-* `olipy.ebooks`: Selects some lines from a public domain text using
-  the *_ebooks algorithm. Demonstrates the
-  `olipy.gutenberg.ProjectGutenbergText`
-  and `olipy.ebooks.EbooksQuotes` classes.
-* `olipy.gibberish`: Prints out 140-character string of aesthetically
-  pleasing(?) gibberish. Demonstrates the `gibberish.Gibberish` class.
-* `olipy.mashteroids`: Generates names and IAU citations for minor
-  planets. Demonstrates Queneau assembly on sentences.
-* `olipy.sonnet`: Generates Shakespearean sonnets using Queneau assembly.
-* `olipy.typewriter`: Retypes whatever you type into it, with added typoes.
-* `olipy.words`: Generates common-looking and obscure-looking English
-  words.
-
 # Module guide
 
-## alphabet.py
+### `olipy.alphabet`
 
 A list of interesting groups of Unicode characters -- alphabets, shapes, and so on.
 
@@ -99,7 +77,7 @@ print(Alphabet.default().random_choice())
 
 This module is used heavily by gibberish.py.
 
-# corpora.py
+### `olipy.corpora`
 
 This module makes it easy to load datasets from Darius
 Kazemi's [Corpora Project](https://github.com/dariusk/corpora), as
@@ -159,7 +137,7 @@ corpora.get_file("animals", "birds_antarctica") # returns dict w/data
 corpora.get_file("words/literature", "shakespeare_words")
 ```
 
-## ebooks.py
+### `olipy.ebooks`
 
 A module for incongruously sampling texts in the style of the infamous
 [https://twitter.com/horse_ebooks](@horse_ebooks). Based on the
@@ -184,7 +162,7 @@ Example scripts for ebooks.py:
   text, with a bias towards the keywords you give it as command-line
   arguments.
 
-## gibberish.py
+### `olipy.gibberish`
 
 A module for those interested in the appearance of Unicode
 glyphs. Its main use is generating aesthetically pleasing gibberish
@@ -197,7 +175,7 @@ print(Gibberish.random().tweet())
 # ঈঔ৫ঽ𐒔৩়দ𐒋ৠসুয়ঊশ𐒆𐒖𐒁ঔৰসঈ𐒆অ𐒋𐒑𐒨়দ৯ৄ৫ 😘
 ```
 
-## gutenberg.py
+### `olipy.gutenberg`
 
 A module for dealing with texts from Project Gutenberg. Strips headers
 and footers, and parses the text.
@@ -211,7 +189,7 @@ print(len(text.paragraphs))
 # 1258
 ```
 
-## ia.py
+### `olipy.ia`
 
 A module for dealing with texts from Internet Archive.
 
@@ -233,7 +211,7 @@ print(item.image_url(page, scale=8))
 # https://ia600106.us.archive.org/BookReader/BookReaderImages.php?zip=/30/items/TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150/TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150_jp2.zip&file=TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150_jp2/TNM_Radio_equipment_catalog_fall__winter_1963_-_H_20180117_0150_0007.jp2&scale=8
 ```
 
-## letterforms.py
+### `olipy.letterforms`
 
 A module that knows things about the shapes of Unicode glyphs.
 
@@ -246,7 +224,7 @@ print(alternate_spelling("I love alternate letterforms."))
 # ヱ 𝑳𝖮Ⓥ𝙀 𝚊𝓵┯⒠┌𝐍ａ⫪𝖊 𝐋𝖾ߙ𝓉ᥱ𝙧ߓ𝕠┍ጠ𝑆.
 ```
 
-## markov.py
+### `olipy.markov`
 
 A module for generating new token lists from old token lists using a
 Markov chain.
@@ -276,7 +254,7 @@ print(" ".join(g.assemble()))
 # the heart'--allowed--yet I got out and more convenient.... Mr.
 ```
 
-## mosaic.py
+### `olipy.mosaic`
 
 Tiles Unicode characters together to create symmetrical mosaics.
 gibberish.py uses this module as one of its techniques. Includes
@@ -302,7 +280,7 @@ print(gibberish.tweet())
 
 ```
 
-## queneau.py
+### `olipy.queneau`
 
 A module for Queneau assembly, a technique pioneered by Raymond
 Queneau in his 1961 book "Cent mille milliards de poèmes" ("One
@@ -317,12 +295,12 @@ print(assembler.assemble_word())
 # Trilusmiasunaus
 ```
 
-## randomness.py
+### `olipy.randomness`
 
 Techniques for generating random patterns that are more sophisticated
 than `random.choice`.
 
-### `Gradient`
+#### `Gradient`
 
 The `Gradient` class generates a string of random choices that are
 weighted towards one set of options near the start, and weighted
@@ -337,7 +315,7 @@ print("".join(Gradient.gradient(string.ascii_lowercase, string.ascii_uppercase, 
 # rkwyobijqQOzKfdcSHIhYINGrQkBRddEWPHYtORB
 ```
 
-### `WanderingMonsterTable`
+#### `WanderingMonsterTable`
 
 The `WanderingMonsterTable` class lets you make a weighted random selection from 
 one of four buckets. A random selection from the "common" bucket will show up 65% of the time, a 
@@ -362,8 +340,7 @@ for i in range(5):
 # Giant rat
 ```
 
-tokenizer.py
-------------
+### `olipy.tokenizer`
 
 A word tokenizer that performs better than NLTK's default tokenizers
 on some common types of English.
@@ -377,8 +354,7 @@ WordTokenizer().tokenize(s)
 # ['Good', 'muffins', 'cost', '$', '3.88', 'in', 'New', 'York.', 'Email:', 'muffins@example.com']
 ```
 
-typewriter.py
--------------
+### `olipy.typewriter`
 
 Simulates the Adler Universal 39 typewriter used in _The Shining_ and
 the sorts of typos that would be made on that typewriter. Originally
